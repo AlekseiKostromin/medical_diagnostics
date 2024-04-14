@@ -24,7 +24,6 @@ class CartItem(models.Model):
     price = models.PositiveIntegerField(verbose_name='цена', null=True, blank=True)
     total = models.PositiveIntegerField(verbose_name='итого', null=True, blank=True)
 
-
     def __str__(self):
         return f"{self.quantity} x {self.labtest.name}"
 
