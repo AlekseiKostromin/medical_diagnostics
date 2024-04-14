@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<a class="p-2 btn btn-outline-primary" href="{% url 'main:booking_create' %}">Записаться на прием</a>
+<div class="row mb-2">
+
+    {% for doctor in doctor_list %}
+        <div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+
+              <h3 class="mb-0">
+                <a class="text-dark" href="{% url 'main:doctor_detail' doctor.id %}">{{ doctor }}</a>
+              </h3>
+              <div class="mb-1 text-muted"></div>
+                <p class="card-text mb-auto">{{ doctor.visit }}</p>
+              <p class="card-text mb-auto">Цена {{ doctor.price }} руб</p>
+
+
+
+                {% if user.is_staff %}
+                <a href="{% url 'main:doctor_update' doctor.id %}"
+                       class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                    <a href="{% url 'main:doctor_delete' doctor.id %}"
+                       class="btn btn-sm btn-outline-danger">Удалить</a>
+
+                {% endif %}
+
+            </div>
+
+          </div>
+        </div>
+    {% endfor %}
+
+
+{% endblock %}

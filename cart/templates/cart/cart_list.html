@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+  Корзина
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+<div class="container">
+    <div class="cart-header">
+  <h1>Корзина</h1>
+  </div>
+    <ul>
+      {% for item in cart_items %}
+
+
+          <li class="cart-item">
+            <li class="cart-item">
+            <div class="cart-item-details">
+                <div class="cart-item-name">{{ item.labtest.name }}</div>
+
+            </div>
+            <div class="cart-item-quantity">
+                <form action="{% url 'cart:decrease_cart_item' item.labtest.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="quantity-btn decrease-quantity" type="submit">-</button>
+                </form>
+                <span class="item-quantity">{{ item.quantity }}</span>
+                <form action="{% url 'cart:increase_cart_item' item.labtest.id %}" method="post">
+
+                    {% csrf_token %}
+                    <button class="quantity-btn increase-quantity" type="submit">+</button>
+                </form>
+            </div>
+            <div class="cart-item-price" data-price="{{ item.labtest.price }}">
+                {{ item.price }} руб.
+
+                {{ item.total }} руб.
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <a class="continue-shopping-link" href="{% url 'main:labtest_list' %}">К списку анализов</a>
+
+    <a class="checkout-button" href="#">Перейти к оплате</a>
+</div>
+
+{% endblock %}

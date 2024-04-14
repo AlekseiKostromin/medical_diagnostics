@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="col-12">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+               <div class="card-body">
+                   <form method="post">
+                       {% csrf_token %}
+                       <p>Хотите удалить "{{ labtest.name }}"?</p>
+
+                       <button type="submit" class="btn btn-danger">Подтверждение удаления</button>
+                       <a href="{% url 'main:index' %}" class="btn btn-warning">Отмена</a>
+
+
+                   </form>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

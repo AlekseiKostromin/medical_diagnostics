@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block content%}
+
+    <div class="container">
+        <div class="row">
+            <!-- Левая часть с изображением -->
+            <div class="col-md-0">
+
+            </div>
+
+            <!-- Правая часть с информацией о товаре -->
+            <div class="col-md-8">
+                <h2>{{ doctor.specialization }}</h2>
+                <p>Категория: {{ doctor.category }}</p>
+                <p>Стоимость посещения: {{ doctor.price }} руб.</p>
+                <p>Вид: {{ doctor.visit }} </p>
+                <div class="">
+
+
+                        {% if user.is_staff %}
+                <a href="{% url 'main:doctor_update' doctor.id %}"
+                       class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                    <a href="{% url 'main:doctor_delete' doctor.id %}"
+                       class="btn btn-sm btn-outline-danger">Удалить</a>
+
+                {% endif %}
+                    </div>
+
+
+
+
+
+            </div>
+<div class="col-6">
+
+        </div>
+    </div>
+{% endblock %}

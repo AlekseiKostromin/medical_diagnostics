@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block content%}
+
+    <div class="container">
+        <div class="row">
+            <!-- Левая часть с изображением -->
+            <div class="col-md-0">
+                <!-- <img src="/media/{{ product.preview }}/" width="500" height="555"> -->
+            </div>
+
+            <!-- Правая часть с информацией о товаре -->
+            <div class="col-md-8">
+                <h2>{{ labtest.name }}</h2>
+                <p>Описание товара: {{ labtest.description }}</p>
+                <p>Цена: {{ labtest.price }} руб.</p>
+                <p>Время выполнения: {{ labtest.time }} дн.</p>
+                <div class="">
+                  <form action="{% url 'cart:cart_add' labtest.id %}" method="post">
+                      {{ cart_product_form }}
+                      {% csrf_token %}
+                      <button class="add-to-cart-btn">Положить в корзину</button>
+                  </form>
+
+                        {% if user.is_staff %}
+                <a href="{% url 'main:labtest_update' labtest.id %}"
+                       class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                    <a href="{% url 'main:labtest_delete' labtest.id %}"
+                       class="btn btn-sm btn-outline-danger">Удалить</a>
+
+                {% endif %}
+                    </div>
+
+
+
+
+
+            </div>
+<div class="col-6">
+
+        </div>
+    </div>
+{% endblock %}
