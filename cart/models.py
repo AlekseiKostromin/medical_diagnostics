@@ -12,6 +12,10 @@ class Cart(models.Model):
     def __str__(self):
         return f"Cart for {self.user}"
 
+    class Meta:
+        verbose_name = 'Корзина'
+        verbose_name_plural = 'Корзины'
+
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, verbose_name='корзина')
@@ -23,3 +27,7 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.labtest.name}"
+
+    class Meta:
+        verbose_name = 'Товары в корзине'
+        verbose_name_plural = 'Товары в корзине'
