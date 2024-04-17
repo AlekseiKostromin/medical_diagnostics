@@ -16,8 +16,8 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=50, verbose_name='имя', null=True, blank=True)
     last_name = models.CharField(max_length=50, verbose_name='фамилия', null=True, blank=True)
     phone = models.CharField(max_length=20, verbose_name='телефон', null=True, blank=True)
-    age = models.IntegerField(verbose_name='возраст', null=True, blank=True)
-    gender = models.IntegerField(verbose_name='пол', null=True, blank=True)
+    age = models.PositiveIntegerField(verbose_name='возраст', null=True, blank=True)
+    gender = models.CharField(choices=GENDER, verbose_name='пол', null=True, blank=True)
     city = models.CharField(max_length=50, verbose_name='город', null=True, blank=True)
 
     USERNAME_FIELD = 'email'
