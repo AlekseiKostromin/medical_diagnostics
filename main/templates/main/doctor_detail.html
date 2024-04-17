@@ -14,7 +14,7 @@
                 <h2>{{ doctor.specialization }}</h2>
                 <p>Категория: {{ doctor.category }}</p>
                 <p>Стоимость посещения: {{ doctor.price }} руб.</p>
-                <p>Вид: {{ doctor.visit }} </p>
+                <p>Вид: {{ doctor.visit.label }} </p>
                 <div class="">
 
 
@@ -35,5 +35,6 @@
 <div class="col-6">
 
         </div>
+    </div>
     </div>
 {% endblock %}

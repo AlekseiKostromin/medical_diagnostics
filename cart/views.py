@@ -1,10 +1,7 @@
 from decimal import Decimal
-
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-
-
 from main.models import LabTest
 from .cart import Cart
 from .models import Cart, CartItem
@@ -13,6 +10,8 @@ from .models import Cart, CartItem
 @login_required()
 def view_cart(request):
     cart = request.user.cart
+    if not cart:
+        cart = Cart.objects.create(user=request.user)
     cart_items = CartItem.objects.filter(cart=cart)
 
     return render(request, 'cart/cart_list.html', {'cart_items': cart_items})

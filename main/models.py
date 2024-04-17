@@ -50,6 +50,7 @@ class Doctor(models.Model):
                                  verbose_name='категория', null=True,
                                  blank=True)
     price = models.IntegerField(verbose_name='цена', null=True, blank=True)
+    visit = models.CharField(max_length=20, choices=VISITS)
 
     class Meta:
         verbose_name = 'Доктор'
