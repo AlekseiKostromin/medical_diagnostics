@@ -9,7 +9,8 @@ from .models import Cart, CartItem
 
 @login_required()
 def view_cart(request):
-    cart = request.user.cart
+    #cart = request.user.cart
+    cart = Cart.objects.all().filter(user=request.user).last()
     if not cart:
         cart = Cart.objects.create(user=request.user)
     cart_items = CartItem.objects.filter(cart=cart)
