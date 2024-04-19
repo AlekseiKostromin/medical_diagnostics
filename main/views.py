@@ -22,7 +22,7 @@ def contacts(request):
             name,
             message,
             phone_number,
-            ['olga@noran.ru'],
+            ['cs777@yandex.ru'],
 
         )
     context = {
